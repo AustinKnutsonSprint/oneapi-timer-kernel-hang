@@ -13,6 +13,7 @@ specific time (use the Kernel fmax from pipes.prj/acl_quartus_report.txt).
 
 The expected output is:
 
+```
 ./pipes.fpga 
 fmax:  100
 fmax_sec: 100000000
@@ -39,10 +40,12 @@ Persistent kernel shutdown
 0
 Freeing memory
 Success
+```
 
 When the memory access on line 101 is uncommented, the kernel hangs and produces
 output similar to the following:
 
+```
 ./pipes.fpga 
 fmax:  100
 fmax_sec: 100000000
@@ -53,6 +56,7 @@ fmax_sec: 100000000
 4: 0.657344
 5: 0.657354
 6: 1.31454
+```
 
 
 At which point it needs to be terminated with CTRL-C
