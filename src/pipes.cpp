@@ -97,8 +97,9 @@ int main(int argc, char *argv[])
                int message = EventMessagePipe::read(has_event_msg);
                if (has_event_msg)
                {
-                  // If I comment out this line, then the program runs as expected.
+                  ONEAPI::atomic_fence(ONEAPI::memory_order::acquire, ONEAPI::memory_scope::device);
                   device_data[message] = *timer_data;
+                  ONEAPI::atomic_fence(ONEAPI::memory_order::release, ONEAPI::memory_scope::device);
                   if (message == 0)
                      break;
                }
@@ -129,7 +130,9 @@ int main(int argc, char *argv[])
                   if (++i > fmax_sec)
                      break;
                }
+               ONEAPI::atomic_fence(ONEAPI::memory_order::acquire, ONEAPI::memory_scope::device);
                *timer_data = *timer_data + 1;
+               ONEAPI::atomic_fence(ONEAPI::memory_order::release, ONEAPI::memory_scope::device);
                TimerPipe::write(1);
             }
          });

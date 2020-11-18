@@ -1,3 +1,6 @@
+Update: This fences branch seems to fix the issue, but I'm not sure what the underlying causes
+are and whether this is a proper solution.
+
 This repository contains a reproduction of a hang when using multiple kernels
 running concurrently and coordinating using pipes. It was adapted from the 
 example project at oneAPI-samples/DirectProgramming/DPC++FPGA/Tutorials/Features/pipes
